@@ -1,0 +1,21 @@
+{
+  "name": "JustReactY.github.io",
+  "version": "1.0.0",
+  "description": "\"# JustReactY.github.io\" \r 开几个坑",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "docsify serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustReactY/JustReactY.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JustReactY/JustReactY.github.io/issues"
+  },
+  "homepage": "https://github.com/JustReactY/JustReactY.github.io#readme"
+}

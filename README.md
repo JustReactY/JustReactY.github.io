@@ -14,6 +14,7 @@ flutter
 工具合计
 node
 python
+git
 
 # 种草
 [程序员必备的10大GitHub仓库](https://mp.weixin.qq.com/s/azHd1x-4u4tF3ooofkRsNA)

@@ -7,4 +7,5 @@
   * [工具](tools/)
   * [技术文档](docs/)
   * [node](node/)
+  * [git](git/)
   * [python](python/)

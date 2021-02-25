@@ -8,3 +8,17 @@ let domToLeft = dom.getBoundingClientRect().left // dom 的左边到视口左边
 let domToBottom = dom.getBoundingClientRect().bottom // dom 的底边到视口顶部的距离
 let domToRight = dom.getBoundingClientRect().right // dom 的右边到视口左边的距离
 ```
+
+## 判断background-image图片是否存在
+
+``` js
+ImageIsExist(url) {
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.open('Get', url, false);
+    xmlHttp.send();
+    if (xmlHttp.status === 404)
+      return false;
+    else
+      return true;
+}
+```

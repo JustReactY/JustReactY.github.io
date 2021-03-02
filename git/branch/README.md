@@ -2,18 +2,18 @@
 
 <font size='4'>概述</font>
 
-<img src="./assets/img/git分支管理策略.png" width = "80%" alt="图片名称" align=center />
+<img src="git\branch\assets\img\git分支管理策略.png" width = "80%" alt="图片名称" align=center />
 
 ## git flow工作流
 
 > Git的特色之一就是可以<font color='red'>*灵活的建立分支*</font>，因为有分支的存在，才构成了多工作流的特色。<br>
 > 同时因为其灵活性，也应运而生出<font color='red'>*分支杂乱*</font>的问题，像下图这样：<br>
 
-<img src="./assets/img/杂乱的分支.png" width = "50%" alt="图片名称" align=center />
+<img src="git\branch\assets\img\杂乱的分支.png" width = "50%" alt="图片名称" align=center />
 
 > 为了解决杂乱的工作流，而产生的<font color='red'>*分支管理策略*</font> <br>
 
- <img src="./assets/img/flow工作流.png" width = "50%" alt="图片名称" align=center />
+ <img src="git\branch\assets\img\flow工作流.png" width = "50%" alt="图片名称" align=center />
 
 [三大git分支管理策略](#三大git分支管理策略)
 
@@ -23,7 +23,7 @@
 **长生命周期分支**
 1. **主分支Master**
 
-<img src="./assets/img/主分支.png" width = "30%" alt="图片名称" align=center />
+<img src="git\branch\assets\img\主分支.png" width = "20%" alt="图片名称" align=center />
 
 > 有且仅有一个，<font color='red'>*用于发布版本*</font>，每个版本发布需打tag <br/>
 > tag名为  <font color='red'>*<版本号>_<发布时间>*</font> <br/>
@@ -36,7 +36,7 @@
 
 > 日常开发分支
 
-<img src="./assets/img/开发分支.png" width = "30%" alt="图片名称" align=center />
+<img src="git\branch\assets\img\开发分支.png" width = "20%" alt="图片名称" align=center />
 
 **短生命周期分支**
 1. **功能分支**
@@ -46,7 +46,7 @@
 > 采用<font color='red'>*fearure-*</font>的命名方式 <br/>
 > 使用后应该<font color='red'>*删除*</font> <br/>
 
-<img src="./assets/img/功能分支.png" width = "30%" alt="图片名称" align=center />
+<img src="git\branch\assets\img\功能分支.png" width = "20%" alt="图片名称" align=center />
 
 2. **预发布分支**
 
@@ -63,7 +63,7 @@
 > 采用<font color='red'>*fix-[tag]*</font>命名方式 <br/>
 > 使用后应该<font color='red'>*删除*</font> <br/>
 
-<img src="./assets/img/修复BUG分支.png" width = "30%" alt="图片名称" align=center />
+<img src="git\branch\assets\img\修复BUG分支.png" width = "20%" alt="图片名称" align=center />
 
 ## commit message
 
@@ -299,11 +299,11 @@ git branch -D merge
 
 1. 未使用--no-ff参数
 
-<img src="./assets/img/不使用no.png" width = "30%" alt="图片名称" align=center />
+<img src="git\branch\assets\img\不使用no.png" width = "20%" alt="图片名称" align=center />
 
 2. 使用--no-ff参数
 
-<img src="./assets/img/使用no.png" width = "30%" alt="图片名称" align=center />
+<img src="git\branch\assets\img\使用no.png" width = "20%" alt="图片名称" align=center />
 
 [长生命周期分支](#长生命周期分支)
 

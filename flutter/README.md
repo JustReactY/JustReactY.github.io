@@ -1,6 +1,6 @@
 # flutter
 
-
+## Windows安装
 
 [下载flutter](https://flutterchina.club/setup-windows/)
 
@@ -23,6 +23,12 @@ flutter doctor
 
 
 ![](./assets/page2.png)
+
+
+## macOS安装
+[下载flutter](https://flutterchina.club/setup-macos/)
+[安装环境](https://www.jianshu.com/p/4a7d30371bc7)
+
 
 [初级开发者](https://flutter.cn/docs/codelabs)
 

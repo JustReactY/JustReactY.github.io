@@ -14,6 +14,7 @@
   * [计算机科学](computerScience/)
   * [webComponents](webComponents/)
   * [http](http/)
+  * [npm](npm/)
   <!-- * [python](python/) -->
   <!-- * [自动化部署](DevOps.md) -->
   * [Canvas](Canvas/)

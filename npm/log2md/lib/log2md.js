@@ -3,12 +3,13 @@ const commander = require('commander');
 const fs = require('fs')
 
 commander
-    .version('1.0.12')
+    .version('1.0.13')
     .description('A cli get log to write md')
     .option('--after <after>', '开始时间')
     .option('--before <before>', '结束时间')
     .option('--author <author>', '作者')
     .option('--week <week>', '周 支持 0 -> 上周 1 -> 本周')
+    .option('--sort <sort>', '是否排序 支持 0 -> 不排序 1 -> 排序')
 commander
     .command('dev')
     .description('run remote setup commands')
@@ -16,19 +17,20 @@ commander
     .option('--author <author>', '作者')
     .option('--before <before>', '结束时间')
     .option('--week <week>', '周 支持 0 -> 上周 1 -> 本周', 1)
+    .option('--sort <sort>', '是否排序 支持 0 -> 不排序 1 -> 排序', 1)
     .action((cmd) => {
         
     });
 commander.parse(process.argv);
 
 class Log2mdPlugin {
-    constructor(options) {
+    constructor(options, sort) {
         this.options = {}
         if (typeof options !== 'undefined') {
             this.keys = Object.keys(options)
             this.keys.length > 0 && this.mergeOptions(options)
         }
-
+        this.sort = sort * 1 === 1
         this._cmd = this.buildCmd()
         // console.log(this._cmd)
     }
@@ -37,9 +39,9 @@ class Log2mdPlugin {
         return new Promise((resolve, reject) => {
             shell.exec(this._cmd, (code, stdout, stderr) => {
                 if (code) {
-                    reject(this.formateAndSort(stderr))
+                    reject(this.sort ? this.formateAndSort(stderr) : this.formate(stderr))
                 } else {
-                    resolve(this.formateAndSort(JSON.parse(stdout)))
+                    resolve(this.sort ? this.formateAndSort(JSON.parse(stdout)) : this.formate(JSON.parse(stdout)))
                 }
             })
         })
@@ -187,7 +189,8 @@ let {
     after,
     author,
     before,
-    week
+    week,
+    sort
 } = argv
 
 
@@ -196,6 +199,6 @@ const log2md = new Log2mdPlugin({
     author,
     before,
     week
-})
+}, sort)
 
 log2md.write()

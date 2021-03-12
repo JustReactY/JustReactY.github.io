@@ -4,7 +4,7 @@
   "description": "\"# JustReactY.github.io\" \r 开几个坑",
   "main": "index.js",
   "scripts": {
-    "log": "log2md run",
+    "log": "log2md run --after 2020-02-02",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "docsify serve"
   },
@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/JustReactY/JustReactY.github.io#readme",
   "dependencies": {
-    "log2md": "^1.0.19"
+    "log2md": "^1.0.22"
   }
 }

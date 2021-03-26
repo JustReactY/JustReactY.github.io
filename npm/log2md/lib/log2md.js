@@ -15,7 +15,7 @@ class Log2mdPlugin {
             style: '样式构建',
             docs: '补充文档',
         }
-        this.sort = sort * 1 === 1
+        this.sort = sort ? sort * 1 === 1 : true
         this.defaultConfig = {
             bookMark: this.bookMark,
             sort: this.sort
@@ -110,7 +110,7 @@ class Log2mdPlugin {
                     this.options.before = tool.getTime(1)
                 }
             } else {
-                this.options[item] = options[item]
+                options[item] && (this.options[item] = options[item])
             }
         })
     }

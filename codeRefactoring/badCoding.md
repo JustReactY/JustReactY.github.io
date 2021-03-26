@@ -486,36 +486,164 @@ class Customer {
 **Switch惊悚现身**
 
 - 将条件式替换为多态
-``` js
-class Customer {
-    constructor(type) {
-        this._type = type
-        this._numberOfCoconuts = 12
-        this._isNailed = false
-    }
-    getBaseSpeed() {
-        return 33
-    }
-    getLoadFactor() {
-        return 44
-    }
-    getSpeed() {
-        switch (_type) {
-            case EUROPEAN:
-               return getBaseSpeed();
-            case AFRICAN:
-               return getBaseSpeed() - getLoadFactor() * _numberOfCoconuts;
-            case NORWEGIAN_BLUE:
-               return (_isNailed) ? 0 : getBaseSpeed(_voltage);
-        }
-        throw new Error("Should be unreachable");
-    }
-}
 
-```
+> 它根据对象型别的不同而选择不同的行为。
+> 将这个条件式的每个分支放进一个subclass 内的覆写函数中，然后将原始函数声明为抽象函数
+
 
 - 将类型码替换为子类
 - 将类型码替换为状态/策略
+
+``` js
+class Employee {
+    constructor() {
+        this.ENGINEER = 0
+        this.SALESMAN = 1
+        this.MANAGER = 2
+    }
+    setType(type) {
+        this._type = type;
+    }
+    getType() {
+        return this._type;
+    }
+    payAmount() {
+        switch (this.getType()) {
+            case this.ENGINEER: // 工程师
+                return _monthlySalary;
+            case this.SALESMAN: // 销售员
+                return _monthlySalary + _commission;
+            case this.MANAGER: // 经理
+                return _monthlySalary + _bonus;
+            default:
+                throw new RuntimeException("Incorrect Employee");
+        }
+    }
+}
+
+to
+
+class Employee {
+    setType(arg) {
+        EmployeeType.newType(arg)
+    }
+    getType() {
+        return this._type;
+    }
+    payAmount() {
+        switch (this.getType()) {
+            case EmployeeType.ENGINEER: // 工程师
+                return _monthlySalary;
+            case EmployeeType.SALESMAN: // 销售员
+                return _monthlySalary + _commission;
+            case EmployeeType.MANAGER: // 经理
+                return _monthlySalary + _bonus;
+            default:
+                throw new RuntimeException("Incorrect Employee");
+        }
+    }
+}
+
+abstract class EmployeeType {
+    constructor() {
+        this.ENGINEER = 0
+        this.SALESMAN = 1
+        this.MANAGER = 2
+    }
+    getTypeCode(){}
+    newType(code) {
+        switch (code) {
+            case this.ENGINEER: // 工程师
+                return new Engineer();
+            case this.SALESMAN: // 销售员
+                return new Salesman();
+            case this.MANAGER: // 经理
+                return new Manager();
+            default:
+                throw new RuntimeException("Incorrect Employee");
+        }
+    }
+}
+
+class Engineer extends EmployeeType {
+    getTypeCode() {
+        return Employee.ENGINEER;
+    }
+}
+class Manager extends EmployeeType {
+    getTypeCode() {
+        return Employee.MANAGER;
+    }
+}
+class Salesman extends EmployeeType {
+    getTypeCode() {
+        return Employee.SALESMAN;
+    }
+}
+
+to
+
+class Employee {
+    setType(arg) {
+        EmployeeType.newType(arg)
+    }
+    getType() {
+        return this._type;
+    }
+    payAmount() {
+        return this._type.payAmount(this);
+    }
+}
+
+abstract class EmployeeType {
+    constructor() {
+        this.ENGINEER = 0
+        this.SALESMAN = 1
+        this.MANAGER = 2
+    }
+    getTypeCode(){}
+    newType(code) {
+        switch (code) {
+            case this.ENGINEER: // 工程师
+                return new Engineer();
+            case this.SALESMAN: // 销售员
+                return new Salesman();
+            case this.MANAGER: // 经理
+                return new Manager();
+            default:
+                throw new RuntimeException("Incorrect Employee");
+        }
+    }
+    payAmount() {}
+}
+
+class Engineer extends EmployeeType {
+    payAmount(emp) {
+        return emp.getMonthlySalary();
+    }
+    getTypeCode() {
+        return Employee.ENGINEER;
+    }
+}
+class Manager extends EmployeeType {
+    payAmount(emp) {
+        return emp.getMonthlySalary() + emp.getCommission();
+    }
+    getTypeCode() {
+        return Employee.MANAGER;
+    }
+}
+class Salesman extends EmployeeType {
+    payAmount(emp) {
+        return emp.getMonthlySalary() + emp.getBonus();
+    }
+    getTypeCode() {
+        return Employee.SALESMAN;
+    }
+}
+```
+
+
 - 将参数替换为显式方法
 - 引入Null对象
 > 出现于条件语句 每一个条件都判断了是否为null
@@ -523,7 +651,10 @@ class Customer {
 ## 类间味道
 ### 数据
 1. 基本类型困扰
-> 大多数编程环境都有两种数据：结构类型让你将数据组织成有意义的形式；基本类型则是构成结构型别的积木块。
+> 单独存在的数值不易于理解，也不符合面向对象的思想。大多数开发初期基础类型可以满足需求，后期深入发现需要扩展
+
+**使数值尽量用类代替，就像java中的基本类型那样。**
+
 - 将数据值替换为对象
 - 抽取类
 - 引入参数对象
@@ -540,34 +671,84 @@ class Customer {
 - 封装集合
 
 3. 数据泥团
-> 数据项就像小孩子：喜欢成群结队地待在一块儿。你经常能够在非常多地方看到同样的三或四个数据项：两个classes内的同样字段、很多方法签名式中的同样參数。这些[总是绑在一起出现的数据]真应该放进属于它们自己的对象中。
+> 多个类中重复出现的字段，或多个函数(方法)中相同的入参
+> 重复参数多，影响阅读和理解。
+> 减少相同的字段及入参，缩短入参列，简化函数调用
 
 - 抽取类
 - 引入参数对象
 - 保持对象完整
 
 4. 临时字段
-> 有时你会看到这种对象：其内某个instance 变量仅为某种特定情势而设。这种代码让人不易理解，由于你通常觉得对象在全部时候都须要它的全部变量。在变量未被使用的情况下推測当初其设置目的，会让你发疯。
+> 有时你会看到这种对象：其内某个instance 变量仅为某种特定情势而设。这种代码让人不易理解，
 
 - 抽取类
 - 引入Null对象
 
 ### 继承
 1. 拒收的遗赠
-> Subclasses应该继承superclass的方法和数据。但假设它们不想或不须要继承，又该怎么办呢？它们得到全部礼物。却仅仅从中挑选几样来玩！
+> 继承某个类的子类，并不需要父类的某些方法，属性或不需要实现父类实现的接口
 
 - 将继承替换为委托
 
+``` js
+class Vector {
+    size() {}
+    isEmpty() {}
+    isAndroid() {}
+    isIOS() {}
+}
+
+class MyStack extends Vector {
+    push(element) {
+        insertElementAt(element, 0);
+    }
+    pop() {
+        const result = firstElement();
+        removeElementAt(0);
+        return result;
+    }
+}
+
+to
+
+class Vector {
+    size() {}
+    isEmpty() {}
+    isAndroid() {}
+    isIOS() {}
+}
+
+class MyStack {
+    constructor() {
+        this._vector = new Vector()
+    }
+    size() {
+        return this._vector.size()
+    }
+    push(element) {
+        insertElementAt(element, 0);
+    }
+    pop() {
+        const result = firstElement();
+        removeElementAt(0);
+        return result;
+    }
+}
+```
+
 2. 不当的紧密性
-> 有时候你会看到两个classes过于亲热，花费太多时间去探究彼此的private成分。假设这发生在两个[人]之间。我们不必做卫道之士；但对于 classes，我们希望它们严守清规。
+> 继承（inheritance）往往造成过度亲密
 
 - 搬移方法
 - 搬移字段
 - 将双向关联改为单向
 - 将继承替换成委托
 
+> 除非先有Customer对象，否则不会存在Order对象。
+
 ``` js
-class Order {
+class Order { // 订单
     constructor() {
         this._customer = new Customer() //译注：这是Order-to-Customer link也是本例的移除对象
     }
@@ -585,7 +766,7 @@ class Order {
     }
 }
 
-class Customer {
+class Customer { // 顾客
     constructor() {
         this._orders = new HashSet()
     }
@@ -601,7 +782,7 @@ class Customer {
 - 隐藏委托
 
 ``` js
-class Person {
+class Person { // 人
     constructor() {
         this._department = new Department()
     }
@@ -612,7 +793,7 @@ class Person {
         this._department = arg;
     }
 }
-class Department {
+class Department { // 部门
     constructor() {
         this._chargeCode = 12
         this._manager = '_manager'
@@ -620,7 +801,7 @@ class Department {
     Department(manager) {
         this._manager = manager;
     }
-    getManager() {
+    getManager() { // 经理
         return this._manager;
     }
 }
@@ -638,7 +819,7 @@ getManager() {
 
 
 3. 懒惰类
-> 你所创建的每个class，都得有人去理解它、维护它，这些工作都是要花钱的。
+> 如 果一个class的所得不值其身价，它就应该消失。项目中经常会出现这样的情况： 某个class原本对得起自己的身价，但重构使它身形缩水，不再做那么多工作
 
 - 内联类
 同上
@@ -646,7 +827,7 @@ getManager() {
 
 ### 职责
 1. 依恋情结
-> 我们会看到某个方法为了计算某值，从还有一个对象那儿调用差点儿半打的取值方法。最根本的原则是：将总是一起变化的东西放在一块儿。［数据］和[引用这些数据]的行为总是一起变化的。
+> 某个函数为了实现其功能，经常从另一个类中获取大量数据。比起自身所在的类来说，更加依赖于另一个类,代码结构混乱，类分功不明确
 
 - 搬移方法
 - 搬移字段
@@ -654,12 +835,13 @@ getManager() {
 
 2. 过渡耦合的消息链
 
-> 假设你看到用户向一个对象索求还有一个对象，然后再向后者索求还有一个对象，然后再索求还有一个对象……这就是Message Chain。实际代码中你看到的可能是一长串getThis()或一长串暂时变量。採取这样的方式，意味客户将与查找过程中的航行结构紧密耦合。
+> 如果一个对象依赖另一个对象，另一个对象又依赖其他对象……
+> 代码中调用链过长,代码耦合度高，造成代码扩展或修改困难
 
 - 隐藏委托
 
 3. 中间人
-> 人们可能过度运用delegation。你或许会看到某个class接口有一半的方法都托付给其他class，这样就可能是过度运用。
+> 类中的函数存在过度委托给其他对象的情况,委托函数过多时，减少委托，让调用者直接访问目标类进行操作
 
 - 移除中间人
 - 内联方法
@@ -668,15 +850,18 @@ getManager() {
 
 ### 协调变化
 1. 发散式改变
-> 我们希望软件可以更easy被改动——毕竟软件再怎么说本来就该是[软]的。
-一旦须要改动，我们希望可以找到系统的某一点，仅仅在该处做改动。
-Divergent Change是指[一个class受多种变化的影响]
-Shotgun Surgery是指[一种变化引发多个classes对应改动]。
+> 由于代码的各种修改或扩展，每次都要修改某个类,
+> 可扩展性差，某个类干的事过多。
+> 针对某一外界变化的所有相应修改，都只发生在单一类中。这个类内的所有内容都应该反应此变化。
+
 
 - 抽取类
 
 2. 霰弹式修改
-> Shotgun Surgery类似Divergent Change。但恰恰相反。假设每遇到某种变化，你都必须在很多不同的class内做出很多小改动以响应之。你所面临的坏味道就是Shotgun Surgery。假设须要改动的代码散布四处。你不但非常难找到它们。也非常easy忘记某个重要的改动。
+> 牵一发而动全身,每次遇到某种变化，都必须在不同的类中做出小修改,
+> 代码散步各处，不利于扩展和阅读，增加代码修改难度及工作量,
+尽量使某类变化通过某个特定类来处理，避免修改过多类。提升代码可扩展性，减少不必要的工作量。
+
 
 
 - 搬移方法
@@ -684,15 +869,16 @@ Shotgun Surgery是指[一种变化引发多个classes对应改动]。
 - 内联类
 
 3. 并行继承体系
-> Parallel Inheritance Hierarchies事实上是Shotgun Surgery的特殊情况。在这样的情况下。每当你为某个class添加一个subclass，必须也为其它已实现的兄弟class对应添加一个subclass。
-> 假设一个class的所得不值其身份。它就应该消失。
-> 继承往往造成过度亲热，由于subclass对superclass的了解总是超过superclass的主观愿望。假设你认为该让这个孩子独自生活了，请运用Replace Inheritance with Delegation让它离开继承体系。
+> 每当为一个类增加子类时，必须也为另一个类相应增加子类。
+> 让其中一个继承体系的实例引用另一个继承体系的实例，减少平行继承的类。
 
 - 搬移方法
 - 搬移字段
 
 ### 库类
 **不完备的库类**
+> 封装好的类库中功能不能满足实际需求
+
 1. 引入外来方法
 2. 引入本地扩展
 

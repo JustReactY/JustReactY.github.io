@@ -28,7 +28,7 @@ npm install --save-dev @vue/test-utils
 ```
 
 
-- scss报错
+- scss\png报错
 
 > npm install --dev identity-obj-proxy
 
@@ -37,7 +37,8 @@ npm install --save-dev @vue/test-utils
 
 moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    '\\.(css|scss)$': 'identity-obj-proxy'
+    // '\\.(css|scss)$': 'identity-obj-proxy',
+    ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
   },
 ```
 
@@ -46,7 +47,21 @@ moduleNameMapper: {
 [](https://github.com/microsoft/ApplicationInsights-node.js/issues/547)
 
 
+
+```
+transformIgnorePatterns: [ // 转化时忽略 node_modules
+    '/node_modules/',
+    // '/src/utils/jssdk.min.js',
+    '/src/utils/',
+  ],
+```
+
+
 ## 参考
 https://www.jianshu.com/p/30c29b5a2d30
+
+https://my.oschina.net/u/4480069/blog/4517404
+
+https://segmentfault.com/a/1190000020364006
 
 https://next.vue-test-utils.vuejs.org/

@@ -20,4 +20,7 @@
   <!-- * [自动化部署](DevOps.md) -->
   * [Canvas](Canvas/)
   * [重构](codeRefactoring/)
+  * [微信相关](wx/)
+  * [Vue](vue/)
+  * [设计模式](designPatterns/)
   * [种草](grass.md)

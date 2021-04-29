@@ -1,3 +1,5 @@
 [vue-cli3查看webpack配置](https://blog.csdn.net/qq_36959274/article/details/108382009)
 [ts in webpack2](https://blog.csdn.net/hellow_world_/article/details/89378397)
 [ts in vue-cli](http://kmanong.top/kmn/qxw/form/article?id=70328&cate=52)
+[ts - router](https://segmentfault.com/a/1190000018355461)
+[ts - router](https://www.cnblogs.com/wuqilang/p/12508315.html)

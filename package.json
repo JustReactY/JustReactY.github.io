@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/JustReactY/JustReactY.github.io#readme",
   "dependencies": {
-    "log2md": "^1.0.22"
+    "log2md": "^1.0.22",
+    "three.js": "^0.77.1"
   }
 }

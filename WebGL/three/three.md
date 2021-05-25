@@ -129,4 +129,8 @@ Three.js 提供了包括环境光 AmbientLight、点光源 PointLight、聚光�
 
 [](https://zhuanlan.zhihu.com/p/27296011)
 
+[Three.js 基础](https://threejsfundamentals.org/threejs/lessons/zh_cn/)
+
+[three js 手册](https://threejs.org/docs/index.html#manual/zh/introduction/Creating-a-scene)
+
 [WebGL 跨域图像](https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-cors-permission.html)

@@ -112,11 +112,11 @@ WebGL 门槛相对较高，计算机图形学需要相对较多的数学知识�
 
 **材质**
 
-![](../assets/material.svg)
+![](../assets/material.jpg)
 
-MeshBasicMaterial 不受光照的影响。
-MeshLambertMaterial 只在顶点计算光照。
-MeshPhongMaterial 则在每个像素计算光照。
+- MeshBasicMaterial 不受光照的影响。
+- MeshLambertMaterial 只在顶点计算光照。
+- MeshPhongMaterial 则在每个像素计算光照。
 
 
 **纹理**

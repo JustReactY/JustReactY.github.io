@@ -2,4 +2,7 @@
   * [超链接](tools/path/)
   * [代码片段](tools/code/)
   * [调试代码](tools/debugger/)
+  * [H5 项目如何适配暗黑模式](tools/black.md/)
+  * [js优化技巧](tools/review.md/)
+  * [用javaScript原声的方式实现设计模式](tools/no_class_in_js.md/)
 * [返回](/)

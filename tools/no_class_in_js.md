@@ -1,4 +1,4 @@
-# 用javaScript原声的方式实现设计模式
+# 用javaScript原生的方式实现设计模式
 
 **应该在JavaScript中使用Class么**
 

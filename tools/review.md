@@ -1,4 +1,4 @@
-# js优化技巧
+# 15个js优化小技巧
 
 **带有多个条件的if语句**
 
@@ -246,8 +246,25 @@ Math.pow(2,3); // 8
 ```
 
 
+**用状态机优化代码**
 
+业务代码中当遇到各种 if else 的判断的时候同样可以用状态机来优化。把每种情况封装成一个状态，通过某一种条件触发状态的流转，然后在状态机里面选择不同的状态处理逻辑进行处理。
 
+``` js
+function stateMachine(state, payplod) {
+  switch(state) {
+    case XxxState.AAA;
+      handleAaa(payplod);
+      break;
+    case XxxState.BBB;
+      handleBaa(payplod);
+      break;
+    case XxxState.CCC;
+      handleCaa(payplod);
+      break;
+  }
+}
+```
 
 
 

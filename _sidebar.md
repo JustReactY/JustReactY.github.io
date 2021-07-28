@@ -25,4 +25,5 @@
   * [微信相关](wx/)
   * [Vue](vue/)
   * [设计模式](designPatterns/)
+  * [兼容性](compatibility/)
   * [种草](grass.md)

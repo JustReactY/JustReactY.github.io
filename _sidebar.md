@@ -13,6 +13,7 @@
   * [git](git/)
   * [python](python/)
   * [工程化](Engineering/)
+  * [Svelte](Svelte/)
   <!-- * [webpack插件](webpackPlugin/) -->
   * [计算机科学](computerScience/)
   * [webComponents](webComponents/)

@@ -12,12 +12,22 @@ todo list
 
 
 
-[](https://svelte.dev/examples#hello-world)
 [](https://blog.gongbushang.com/fe/2020/03/27/svelte%E4%B8%80%E4%B8%AA%E8%AE%A9%E4%BA%BA%E7%9C%BC%E5%89%8D%E4%B8%80%E4%BA%AE%E7%9A%84%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6.html)
 
 
-[](https://juejin.cn/post/6901845776880795662)
+[前端调研应该怎么做](https://juejin.cn/post/6901845776880795662)
+
 [](https://dev.to/silvio/how-to-create-a-web-components-in-svelte-2g4j)
+
+https://github.com/sinedied/svelte-web-components-template
+https://itnext.io/svelte-web-component-5-4kb-4afe46590d99
+
+https://css-tricks.com/using-custom-elements-in-svelte/
+
+[Svelte 分析报告](https://www.codenong.com/jsc64edbc932a7/)
+
+https://segmentfault.com/a/1190000025174024
+https://zhuanlan.zhihu.com/p/350507037
 
 ### 自问：
 **我的需求是什么？**
@@ -36,6 +46,9 @@ todo list
   - 缺陷及隐患
 
 
+1. clone项目
+2. 使用ts
+> node scripts/setupTypeScript.js
 
 
 1. 使用vite搭建项目
@@ -109,7 +122,19 @@ plugins: [
 ```
 
 
+6. 遇到问题
+- svelte 运行报错 getaddrinfo ENOTFOUND localhost
+> localhost 没有绑定 host，绑定 127.0.0.1 localhost
+> sudo vi /etc/hosts
+
+
 [](https://css-tricks.com/using-custom-elements-in-svelte/)
+
+
+
+https://juejin.cn/post/6926160429060194317
+
+
 
 
 

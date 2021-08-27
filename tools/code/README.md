@@ -146,6 +146,7 @@ white-space:nowrap; //溢出不换行
 overflow: hidden;
 text-overflow: ellipsis;
 display:-webkit-box; //作为弹性伸缩盒子模型显示。
+/*! autoprefixer: off */
 -webkit-box-orient:vertical; //设置伸缩盒子的子元素排列方式--从上到下垂直排列
 -webkit-line-clamp:2; //显示的行
 ```

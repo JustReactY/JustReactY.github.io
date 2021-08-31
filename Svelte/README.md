@@ -10,6 +10,8 @@ todo list
 
 > npm install svelte-spa-router
 
+[被称为“三大框架”替代方案，Svelte 如何简化 Web 开发工作](https://www.infoq.cn/article/5cfuiula3pry1xyz3twq)
+[被称为“三大框架”替代方案，Svelte 如何简化 Web 开发工作](https://www.infoq.cn/article/YCKvxXX6DzpvuP3FQ06k)
 
 
 [](https://blog.gongbushang.com/fe/2020/03/27/svelte%E4%B8%80%E4%B8%AA%E8%AE%A9%E4%BA%BA%E7%9C%BC%E5%89%8D%E4%B8%80%E4%BA%AE%E7%9A%84%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6.html)

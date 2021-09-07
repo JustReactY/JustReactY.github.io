@@ -1,4 +1,4 @@
-# Svelte 如何简化web开发工作 （上）
+# 为什么使用 Svelte （上）
 
 ### **背景**
 
@@ -650,6 +650,10 @@ Svelte 库主要由 node_modules/svelte 目录中的.js 文件定义。主要函
 
 
 
+数据严谨性
+dirty之前判断变更
+位掩码
+编译型语言
 
 
 

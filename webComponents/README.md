@@ -1,11 +1,3 @@
----
-title: webcomponents实践
-date: 2021-03-03 15:15:34
-tags:
-- webcomponents
-author: YYY
----
-
 # web Components能代替现下主流的框架么？
 
 [吉德林法则](#吉德林法则)

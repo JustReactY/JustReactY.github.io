@@ -6,3 +6,8 @@
 > <font color=#444 size=2>——索隆 《海贼王》</font> <br />
 
 
+
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=JustReactY)](https://github.com/anuraghazra/github-readme-stats)
+
+
+

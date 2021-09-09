@@ -1,4 +1,5 @@
 * [Svelte](Svelte/)
   * [入门](Svelte/init/)
   * [技术调研报告](Svelte/技术调研报告.md)
+  * [为什么使用Svelte](Svelte/为什么使用Svelte.md)
 * [返回](/)

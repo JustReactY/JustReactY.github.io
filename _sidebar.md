@@ -5,12 +5,13 @@
   * [TS](TS/)
   * [单元测试](unittesting/)
   * [CSS](CSS/)
-  <!-- * [算法](algorithm/) -->
+  * [算法](algorithm/)
   * [flutter](flutter/)
   * [工具](tools/)
   * [技术文档](docs/)
   <!-- * [node](node/) -->
   * [git](git/)
+  * [降本提效](efficiency/)
   * [python](python/)
   * [工程化](Engineering/)
   * [Svelte](Svelte/)

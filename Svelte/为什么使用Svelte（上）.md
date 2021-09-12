@@ -584,39 +584,6 @@ function update($$) {
 - 重置 Dirty
 
 
-**Svelte是如何标记脏数据的**
-
-``` js
-component.$$.dirty[(i / 31) | 0] |= (1 << (i % 31));
-```
-
-看到 31，看到 << 右移符号，那铁定是位运算没跑了。 我们打印一下dirty
-
-``` js
-console.log('component.$$.dirty :', component.$$.dirty, component.$$.dirty.map(num => num.toString(2).length < 8 ? ('00000000' + num.toString(2)).slice(-8) : num.toString(2)))
-```
-
-```
-component.$$.dirty : [1] ["00000001"]
-component.$$.dirty : [3] ["00000011"]
-```
-
-
-Svelte使用位掩码（bitMask） 的技术来跟踪哪些值是脏的，即自组件最后一次更新以来，哪些数据发生了哪些更改。
-位掩码是一种将多个布尔值存储在单个整数中的技术，一个比特位存放一个数据是否变化，一般1表示脏数据，0表示是干净数据。
-
-![](./init/位掩码.jpeg)
-
-
-JS 中所有的数字都是符合 IEEE-754 标准的 64 位双精度浮点类型。而所有的位运算都只会保留 32 结果的整数。
-
-将这个语句拆解一下：
-component.$$.dirty[(i / 31) | 0] = component.$$.dirty[(i / 31) | 0] | (1 << (i % 31));
-(i / 31) | 0：这里是用数组下标 i 属于 31，然后向下取整（任何整数数字和 | 0 的结果都是其本身，位运算有向下取整的功效）。
-(1 << (i % 31))：用 i 对 31 取模，然后做左移操作。
-
-这样我们就知道了，dirty 是个数组类型，存放了多个 32 位整数，整数中的每个 bit 表示换算成 instance 数组下标的变量是否发生变更。
-
 
 ### **Svelte会消失么**
 
@@ -651,7 +618,7 @@ Svelte 库主要由 node_modules/svelte 目录中的.js 文件定义。主要函
 
 
 数据严谨性
-dirty之前判断变更
+
 位掩码
 编译型语言
 

@@ -11,7 +11,10 @@
 
 - 开发者满意度
 
-![img](https://pic2.zhimg.com/80/v2-2af48377c5e1e6ced70fef0dc44e2b15_1440w.jpg)
+[2020数据统计](https://2020.stateofjs.com/zh-Hans/)
+
+<!-- ![img](https://pic2.zhimg.com/80/v2-2af48377c5e1e6ced70fef0dc44e2b15_1440w.jpg) -->
+![img](https://stateofx-images.netlify.app/captures/js2020/zh-Hans/front_end_frameworks_section_streams.png)
 
 
 
@@ -613,16 +616,6 @@ Svelte 库主要由 node_modules/svelte 目录中的.js 文件定义。主要函
 [硬核基础二进制篇（一）0.1 + 0.2 != 0.3 和 IEEE-754 标准](https://juejin.cn/post/6940405970954616839)
 
 [硬核基础二进制篇（二）位运算](https://juejin.cn/post/6942291040044843038)
-
-
-
-
-数据严谨性
-
-位掩码
-编译型语言
-
-
 
 
 

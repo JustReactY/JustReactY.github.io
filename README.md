@@ -11,7 +11,52 @@
 
 
 
+
+
+
+
+**学习计划**
+网络
+http
+websockt
+
+浏览器
+垃圾回收
+
+
+框架类
+Jquery
+Vue
+React
+Svelte
+
+前端提效
+cli
+
+大型项目
+单元测试
+
+安全
+跨域
+
+
+音视频
+图形
+
+
+
+
+**种草**
+
 [CSS制作3D游戏](https://mp.weixin.qq.com/s/tfwmyk9sFRSRcWqw4mjEkg)
 
+<br />
+
+
+[商业计划书](https://zhuanlan.zhihu.com/p/409365164)
+
+
+
+[图书检索](https://zhuanlan.zhihu.com/p/376502491)
 
 

@@ -15,6 +15,7 @@
   * [python](python/)
   * [工程化](Engineering/)
   * [Svelte](Svelte/)
+  * [浏览器](WebBrowser/)
   <!-- * [webpack插件](webpackPlugin/) -->
   * [计算机科学](computerScience/)
   * [webComponents](webComponents/)

@@ -1,0 +1,8 @@
+* [JS核心知识点](JS/)
+    * [数据类型](JS/type.md)
+    * [类型判断](JS/typeof.md)
+    * [类型转换](JS/==.md)
+    * [this](JS/this.md)
+    * [闭包](JS/Closures.md)
+    * [new]](JS/new.md)
+* [返回](/)

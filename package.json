@@ -20,8 +20,10 @@
   },
   "homepage": "https://github.com/JustReactY/JustReactY.github.io#readme",
   "dependencies": {
-    "docsify": "^4.12.1",
     "log2md": "^1.0.22",
     "three.js": "^0.77.1"
+  },
+  "devDependencies": {
+    "docsify": "^4.12.1"
   }
 }

@@ -23,3 +23,12 @@ git config --global alias.co checkout
 git config --global alias.cb 'checkout -b'
 ```
 
+**Github进行fork后如何与原仓库同步**
+
+1. git remote -v 检查是否有upstream （上游分支）
+2. git remote add upstream https://github.com/xxx.git 添加上游分支
+3. git status 检查本地是否有未提交更改
+4. git fetch upstream 拉取上游分支更改
+5. git checkout master 切换到要合并的分支
+6. git merge upstream/master 合并代码
+7. git push 推送代码

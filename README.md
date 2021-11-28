@@ -16,6 +16,7 @@ https://juejin.cn/post/6844903830887366670
 
 
 **学习计划**
+
 网络
 http
 websockt
@@ -48,7 +49,12 @@ cli
 
 **种草**
 
+[如何优雅的获取上游更新](https://github.com/selfteaching/the-craft-of-selfteaching/issues/67)
+
 [CSS制作3D游戏](https://mp.weixin.qq.com/s/tfwmyk9sFRSRcWqw4mjEkg)
+
+[常用站点](https://blog.emotionl.fun/page/websites/)
+[资料合集](https://www.notion.so/ec64daa4cc664e17a885633d414e3bee?v=04a8f92657f742c994273038733f972b)
 
 <br />
 

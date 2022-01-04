@@ -1,29 +1,31 @@
-function Promise1(fn) {
-    this.cbs = []
+const PADDING = 'padding'
+const FULFILLED = 'fulfilled'
+const REJECTED = 'rejected'
 
-    const resolve = value => {
-        // console.log(this, value, '===this==')
-        setTimeout(() => {
-            console.log(this, this.cbs.length,value, '===this==')
-            this.data = value
-            this.cbs.forEach(cb => cb(value))
-        })
+class Promise1 {
+    constructor(fn) {
+        this.status = PADDING
+        this.value = null
+        this.reason = null
+
+        try {
+            fn(this.resolve.bind(this), this.reject.bind(this))
+        } catch (error) {
+            this.reject(error)
+        }
     }
-
-    fn(resolve)
-}
-
-Promise1.prototype.then = function (onResolved) {
-    return new Promise1(resolve => {
-        this.cbs.push(() => {
-            const res = onResolved(this.data)
-            if (res instanceof Promise1) {
-                res.then(resolve)
-            } else {
-                resolve(res)
-            }
-        })
-    })
+    resolve(value) {
+        if (this.status === PADDING) {
+            this.value = value
+            this.status = FULFILLED
+        }
+    }
+    reject(reason) {
+        if (this.status === PADDING) {
+            this.reason = reason
+            this.status = FUREJECTEDLFILLED
+        }
+    }
 }
 
 

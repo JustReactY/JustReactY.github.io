@@ -1,0 +1,38 @@
+<html>
+
+<body>
+    <div id="app">
+        <h4>{{info.msg}}</h4>
+        <div>{{title}}</div>
+        <button @click="changeTitle">改变title</button>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        // 通过解构方式拿到相关方法
+        const { createApp, reactive, ref } = Vue;
+        const app = createApp({
+            // setup是新增的生命周期函数，作为总启动入口，其他生命周期、方法，变量声明定义都要写到这个函数里面
+            setup() {
+                // 基本类型变成响应式，init是变量title的初始值
+                let title = ref('init');
+                // 引用类型变成响应式
+                let info = reactive({ msg: 'hello vue3' });
+                const changeTitle = () => {
+                    // 基本类型改变值需要.value
+                    title.value = 'change title';
+                    info.msg = 'msg'
+                }
+                // 模板中用到的变量和方法都需要return，不然不会生效（一开始方法changeTitle没return，排查了半天才发现没有return出来）
+                return {
+                    info,
+                    title,
+                    changeTitle
+                }
+            }
+        });
+        // 挂载id为app的dom元素
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

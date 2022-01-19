@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>Hello</div>
+    <button id="click">Click</button>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.js"></script>
+    <script>
+        window.onload = function () {
+
+            const dom = document.querySelector('#click')
+
+            dom.addEventListener('click', handleClick)
+
+            function handleClick() {
+                axios.post('http://8.141.173.229:8001/api/v1.0/user/account/register', {
+                    accountId: 'admin000',
+                    password: 'admin000'
+                })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                /* const xhr = new XMLHttpRequest()
+
+                xhr.open('post', 'http://8.141.173.229:8001/api/v1.0/property/basic/create')
+
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+
+                xhr.send(`name=基础物料1&type=${1}`)
+
+                xhr.onload = function() {
+                    console.log(xhr.responseText, '===responseText====')
+                } */
+            }
+        }
+
+    </script>
+</body>
+
+</html>

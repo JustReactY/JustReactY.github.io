@@ -6,3 +6,4 @@ nodemodules/
 /WebGL/three/node_modules
 /React/react/node_modules
 vue/vue-next/node_modules
+node/code/node_modules

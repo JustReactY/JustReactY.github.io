@@ -20,7 +20,7 @@ module.exports = {
     // 用来配置必须禁止的代码，test: 检测的范围；val: 代码
     mustForbidden: [{
       test: /\.(js|html)$/,
-      val: ['beta-api.m.jd.com']
+      val: ['beta-api.m.com']
     }]
   }
 

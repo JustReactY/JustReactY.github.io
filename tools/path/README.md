@@ -30,7 +30,6 @@
 [CSS动画](https://animista.net/) <br>
 
 ## 移动端开发
-[云测平台](http://cyber.test.jd.com/#/devices) <br>
 [云测平台](http://mtc.baidu.com/tinypace/mobileCloudy/?from=DaoHang) <br>
 [抓包工具](https://wproxy.org/whistle/) <br>
 [移动端适配](https://cassieran.github.io/you-should-know-more-if-you-being-a-webapp-developer/) <br>

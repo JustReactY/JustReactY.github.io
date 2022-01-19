@@ -80,8 +80,6 @@ boardParams.target = target
 window.boardParamsConfig.push(boardParams)
 ```
 
-[测试Svelte](https://prodev.m.jd.com/mall/active/5yfHNNkVpVWZ3eTUVs9vLkMiyG4/index.html)
-
 
 - 在Vue项目中
 

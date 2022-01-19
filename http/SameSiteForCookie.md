@@ -144,8 +144,8 @@ SameSite 属性可以让 Cookie 在跨站请求时不会被发送，从而可以
 4. Cookie中的「同站」判断就比较宽松：只要两个 URL 的 eTLD+1 相同即可，不需要考虑协议和端口
 5. eTLD 表示有效顶级域名
 6. eTLD+1 则表示，有效顶级域名+二级域名
-7. www.jd.com 和 www.baidu.com 是跨站
-8. www.a.jd.com 和 www.b.jd.com 是同站
+7. www.jds.com 和 www.baidu.com 是跨站
+8. www.a.jds.com 和 www.b.jds.com 是同站
 
 ###### 改变
 ![](./image/SameSite.png)

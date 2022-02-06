@@ -5,6 +5,30 @@
 node版本管理
 - n、nvm安装 node
 
+
+nodejs工作原理
+![](./assets/nodejs.jpg)
+
+
+nodejs事件处理
+![](./assets/nodejs事件处理.jpg)
+
+
+两个v8引擎
+![](./assets/两个v8.jpg)
+
+
+node.js的底层依赖
+
+- v8引擎：主要是js语法的解析，识别js语法
+- libuv：C语言实现的一个高性能异步非阻塞IO库，实现node.js的事件循环
+- http-parse/||http: 底层处理http请求，处理报文，解析请求包等内容
+- openssl：处理加密算法
+
+node.js常见内置模块
+
+
+
 最简单的http服务
 
 1. require 引入 http模块
@@ -40,3 +64,11 @@ node版本管理
 switch host | /etx/hosts
 > 127.0.0.1 nodes.com
 
+
+commonjs规范
+
+
+nodejs周边生态
+
+
+[七天学会NodeJS](https://nqdeng.github.io/7-days-nodejs/)

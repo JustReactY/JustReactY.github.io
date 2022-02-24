@@ -4,10 +4,10 @@ const https = require('https');
 const fs = require('fs');
 
 const host = 'localhost'
-const port = 443
+const port = 8080
 const options = {
-    key: fs.readFileSync('./ca/nodes.com-key.pem'),
-    cert: fs.readFileSync('./ca/nodes.com.pem'),
+    key: fs.readFileSync('./ca/local.shanyue.tech-key.pem'),
+    cert: fs.readFileSync('./ca/local.shanyue.tech.pem'),
 }
 
 const app = https.createServer(options, (req, res) => {
@@ -16,5 +16,6 @@ const app = https.createServer(options, (req, res) => {
     })
     res.end('hello world')
 }).listen(port, host, () => {
-    console.log(`http://${host}/${port}`)
+    console.log(`https://${host}:${port}`)
 })
+

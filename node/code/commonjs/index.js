@@ -1,3 +1,2 @@
-const result = require('./public/module')
-
+const result = require('./module')
 console.log(result)

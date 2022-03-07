@@ -21,8 +21,8 @@ const install = (Vue) => {
 
     requireComponent.keys().forEach(fileName => {
         const config = requireComponent(fileName)
-        const componentName = config.default.name
-        Vue.component(componentName, config.default)
+        const componentName = config.name
+        Vue.component(componentName, config)
     })
 }
 ```
@@ -41,3 +41,36 @@ export default {
 
 
 > $nextTick 监听mounted 执行完成后执行
+
+
+**打包**
+``` js
+"name": "vue-plugins-yyy",
+"version": "0.1.0",
+"private": false,
+"license": "MIT",
+"main": "lib/vue-plugins-yyy.umd.min.js",
+"scripts": {
+    "lib": "vue-cli-service build --target lib --name vue-plugins-yyy --dest lib src/plugins/index.js"
+},
+```
+
+
+**使用**
+``` js
+import plugins from 'vue-plugins-yyy'
+
+import 'vue-plugins-yyy/lib/vue-plugins-yyy.css'
+
+Vue.use(plugins)
+```
+
+
+
+
+
+
+
+**备注**
+
+[项目地址：](https://github.com/JustReactY/vue-plugins-yyy)

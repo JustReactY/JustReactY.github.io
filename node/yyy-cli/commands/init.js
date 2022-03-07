@@ -15,8 +15,8 @@ program.parse(process.argv)
 if (program.args.length < 1) return program.help()
 
 // 第一个参数是 webpack，第二个参数是 project-name
-let templateName = program.args[0]
-let projectName = program.args[1]
+let templateName = program.args[1]
+let projectName = program.args[2]
 
 if (!templateList[templateName]) {
   console.log(chalk.red('\n Template does not exit! \n '))

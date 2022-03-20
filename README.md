@@ -47,6 +47,41 @@ cli
 图形
 
 
+**Promise.all**
+``` js
+// 实例方法
+Promise.all = function(arr) {
+    return new Promise((resolve, reject) => {
+        let res = []
+        let count = 0
+        for(let i = 0; i < arr.length ; i++) {
+            // 传入可能是promise普通值 均转换为Promise
+            Promise.resolve(arr[i]).then(value => {
+                res[i] = value
+                count++
+                if(count === arr.length) resolve(res)
+            }).catch(error => {
+                reject(error)
+            })
+        }
+    })
+}
+```
+
+**Promise.finally**
+``` js
+// 原型方法
+Promise.prototype.finally = (callback) => {
+    return this.then(
+        (value) => {
+            return Promise.resolve(callback()).then(() => value)
+        }
+        (err) => {
+            return Promise.reject(callback()).then(() => {throw err} )
+        }
+    )
+}
+```
 
 
 **种草**

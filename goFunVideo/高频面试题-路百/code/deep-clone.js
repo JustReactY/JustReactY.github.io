@@ -28,3 +28,8 @@ function deepClone(obj, hash = new WeakMap()) {
 
     return resObj
 }
+
+let arr = [1, 2, 3]
+
+let b = deepClone(arr)
+console.log(b, Reflect.ownKeys(arr))

@@ -1,0 +1,20 @@
+
+start
+:"打开设计师工作台";
+:"打开任务";
+if ("是否安装过BIM") then (true)
+    if ("检测版本，是否需要更新") then (yes)
+      :"更新版本";
+    else (no)
+    endif
+  else (no)
+  :"下载BIM.exe";
+
+
+endif
+
+
+:"打开任务";
+
+stop
+@enduml

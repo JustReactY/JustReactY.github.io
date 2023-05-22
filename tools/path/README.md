@@ -18,6 +18,7 @@
 [Windows包管理工具](https://sspai.com/post/52496) <br>
 [本地启https服务](https://blog.swwind.me/post/certificate) <br>
 
+
 ## regex
 [正则匹配](https://regex101.com/) <br>
 [正则匹配](https://regexr.com/) <br>
@@ -43,6 +44,22 @@
 [markdown文档书写](https://github.com/mdnice/markdown-nice) <br>
 [markdown文档书写](https://www.typora.io) <br>
 
+## 好用的插件
+
+### Chrome
+- 沙拉查词-聚合词典划词翻译
+- 二维码生成器 (Quick QR)
+- Vimium 扔掉鼠标 https://zhuanlan.zhihu.com/p/113316942
+- Proxy SwitchyOmega
+- ModHeader 注入header
+
+### vsCode
+- 快速定位组件 LocatorJS https://chrome.google.com/webstore/detail/locatorjs/npbfdllefekhdplbkdigpncggmojpefi/related?hl=zh-CN
+
+### Mac
+[截图+贴图](https://en.freedownloadmanager.org/Mac-OS/Snipaste-FREE.html) <br>
+
+[工具集](https://www.paycast.io/)
 
 ## 知识获取
 [中文文档](https://www.docschina.org) <br>

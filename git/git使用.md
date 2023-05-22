@@ -32,3 +32,9 @@ git config --global alias.cb 'checkout -b'
 5. git checkout master 切换到要合并的分支
 6. git merge upstream/master 合并代码
 7. git push 推送代码
+
+## git 同时推送多个分支
+
+```
+git remote set-url --add origin https://xxx.git
+```

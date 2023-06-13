@@ -14,9 +14,3 @@
 [我在项目用到这十多种轮子助我提升开发效率](https://juejin.cn/post/7012012633180078117?utm_source=gold_browser_extension)
 
 [您的连接不是私密连接的几种原因及解决办法](https://segmentfault.com/a/1190000040074507)
-
-
-# 疑难杂症解决
-fatal: No url found for submodule path 'xxx' in .gitmodule
-
-> git rm --cached xxx

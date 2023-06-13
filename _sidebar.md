@@ -31,3 +31,4 @@
   * [设计模式](designPatterns/)
   * [兼容性](compatibility/)
   * [种草](grass.md)
+  * [个人博客搭建](selfDoces/)

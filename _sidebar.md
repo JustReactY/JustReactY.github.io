@@ -10,7 +10,7 @@
   * [flutter](flutter/)
   * [工具](tools/)
   * [技术文档](docs/)
-  <!-- * [node](node/) -->
+  * [node](node/)
   * [git](git/)
   * [降本提效](efficiency/)
   * [python](python/)

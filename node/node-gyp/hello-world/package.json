@@ -8,7 +8,8 @@
     "node-gyp": "^9.4.0"
   },
   "scripts": {
-    "test": "node hello.js"
+    "test": "node hello.js",
+    "run": "node-gyp rebuild"
   },
   "gypfile": true
 }

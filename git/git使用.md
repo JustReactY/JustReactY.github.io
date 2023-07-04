@@ -38,3 +38,18 @@ git config --global alias.cb 'checkout -b'
 ```
 git remote set-url --add origin https://xxx.git
 ```
+
+## git 为分支添加描述
+```
+git config.branch.xxx.description '描述'
+```
+
+## gitlab.ci 相关问题
+### 报错 operation not permitted
+
+修改用户权限：
+> 主要出现在Windows上
+- net user // 列出用户
+- cd ..
+- icacls 项目路径/ /grant 用户名:F /T /C /Q
+- cd 项目路径/

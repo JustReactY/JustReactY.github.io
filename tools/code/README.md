@@ -150,3 +150,23 @@ display:-webkit-box; //作为弹性伸缩盒子模型显示。
 -webkit-box-orient:vertical; //设置伸缩盒子的子元素排列方式--从上到下垂直排列
 -webkit-line-clamp:2; //显示的行
 ```
+
+
+## 批量下载文件并重命名
+
+```
+const handleDownload = (row: BasicFolder.FolderDetail) => {
+  console.log(row);
+  const x = new window.XMLHttpRequest();
+  x.open('GET', row.fileUrl?.originalUrl as string, true);
+  x.responseType = 'blob';
+  x.onload = () => {
+    const url = window.URL.createObjectURL(x.response);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = row.fileUrl?.fileName as string;
+    a.click();
+  };
+  x.send();
+};
+```

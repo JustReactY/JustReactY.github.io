@@ -3,5 +3,6 @@ nodemodules/
 
 node/node-gyp/hello-world/node_modules/
 node/node-gyp/hello-world/build/
-Rust/print-demo/target/
 node/node-gyp/hello-world/yarn.lock
+Rust/print-demo/target/
+Rust/http-demo/target/

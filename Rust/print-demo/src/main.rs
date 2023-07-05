@@ -1,16 +1,17 @@
 use std::io;
 
 fn main() {
-    println!("Guess the number!");
+    println!("print PI!");
 
-    println!("Please input your guess.");
+    println!("Please input your count.");
 
-    let mut guess = String::new();
+    let mut count = String::new();
 
     io::stdin()
-        .read_line(&mut guess)
+        .read_line(&mut count)
         .expect("Failed to read line");
 
-    println!("You guessed: {}", guess);
-    println!("PI: {}", std::f64::consts::PI)
+    let number: usize = count.trim().parse().expect("input not number");
+    println!("You count: {}", number);
+    println!("the total {1} digits of math PI = {:.1$}", std::f64::consts::PI, number);
 }

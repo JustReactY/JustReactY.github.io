@@ -6,3 +6,7 @@ node/node-gyp/hello-world/build/
 node/node-gyp/hello-world/yarn.lock
 Rust/print-demo/target/
 Rust/http-demo/target/
+Rust/str_demo/target/
+Rust/let_demo/target/
+Rust/struct_demo/target/
+Rust/enum_demo/target/

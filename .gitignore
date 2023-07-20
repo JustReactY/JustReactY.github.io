@@ -10,3 +10,9 @@ Rust/str_demo/target/
 Rust/let_demo/target/
 Rust/struct_demo/target/
 Rust/enum_demo/target/
+Rust/cargo_demo/target/
+Rust/array_demo/target/
+Rust/map_demo/target/
+Rust/err_demo/target/
+Rust/closures_demo/target/
+Rust/point_demo/target/

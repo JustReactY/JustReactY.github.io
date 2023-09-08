@@ -170,3 +170,5 @@ const handleDownload = (row: BasicFolder.FolderDetail) => {
   x.send();
 };
 ```
+
+

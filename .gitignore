@@ -1,6 +1,8 @@
 /node_modules
 nodemodules/
 
+sh/node_modules/
+
 node/node-gyp/hello-world/node_modules/
 node/node-gyp/hello-world/build/
 node/node-gyp/hello-world/yarn.lock
@@ -16,3 +18,5 @@ Rust/map_demo/target/
 Rust/err_demo/target/
 Rust/closures_demo/target/
 Rust/point_demo/target/
+Rust/asyc_demo/target/
+Rust/note_demo/target/

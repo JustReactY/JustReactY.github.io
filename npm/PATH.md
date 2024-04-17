@@ -92,3 +92,29 @@ chmod u+x test.js
 
 参考文档：
 https://dev.to/woovi/env-noder-no-such-file-or-directory-371e
+
+
+
+
+## 如何限制使用node版本 并阻断任务
+
+1、package.json中加入
+```
+{
+  "engines": {
+    "node": "^16"
+  },
+}
+```
+
+2、.npmrc中加入
+```
+engine-strict=true
+```
+
+<!-- 3、任务中加入
+```
+#!/bin/bash
+node -v
+npm config set engine-strict true
+``` -->

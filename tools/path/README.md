@@ -52,6 +52,7 @@
 - Vimium 扔掉鼠标 https://zhuanlan.zhihu.com/p/113316942
 - Proxy SwitchyOmega
 - ModHeader 注入header
+- 沉浸式翻译 网页翻译
 
 ### vsCode
 - 快速定位组件 LocatorJS https://chrome.google.com/webstore/detail/locatorjs/npbfdllefekhdplbkdigpncggmojpefi/related?hl=zh-CN
@@ -64,3 +65,5 @@
 ## 知识获取
 [中文文档](https://www.docschina.org) <br>
 
+
+## 好用的网址

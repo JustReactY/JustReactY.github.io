@@ -1,0 +1,36 @@
+@startuml
+skinparam dpi 1080
+title 工作台打包收口
+
+actor RD
+collections feat分支
+collections beta分支
+actor QA
+collections tron
+actor UX
+actor PM
+
+
+RD -> feat分支 : 创建
+feat分支 -> QA : 开发完成后提测
+QA -> tron: 打包feat并测试
+QA -> RD: 反馈BUG
+RD -> feat分支: 修复BUG
+QA -> RD: 测试进度达到70%通知合码
+RD -> beta分支: 合码并确保版本号增加
+RD -> QA: 合码完成
+QA -> tron: 打包beta并发布
+QA -> UX: 通知使用beta包走查
+QA -> PM: 通知使用beta包走查
+UX -> RD: 走查问题
+PM -> RD: 走查问题
+RD -> feat分支: 修复走查问题
+feat分支 -> beta分支: 合码并确保版本号增加
+RD -> QA: 问题修复
+QA -> tron:打包beta并发布
+
+QA -> UX: 通知使用beta包复查
+QA -> PM: 通知使用beta包复查
+
+
+@enduml

@@ -1,0 +1,81 @@
+
+@startuml
+skinparam dpi 3840
+title 埋点系统逻辑
+
+
+namespace Main {
+  entity TEA {
+    埋点SDK
+  }
+
+  class EventTracking  {
+    +init()
+    +configTea()
+
+    +reportStat()
+  }
+
+  namespace Trackservices {
+    interface logStartWorkbench {
+      工作台启动
+    }
+    interface logShutDownWorkbench {
+      工作台退出
+    }
+    interface logOnlineHeartbeat {
+      工作台在线
+    }
+  }
+}
+
+namespace Renderer {
+  class EventTracking  {
+    +reportStat()
+  }
+
+  namespace Trackservices {
+    interface logUserLogin {
+      用户登录
+    }
+    interface logEnterCountLIstPage {
+      算量清单页面进入
+    }
+    interface logStayCountLIstPage {
+      算量清单页面退出
+    }
+    interface logClickCountLIstCheck {
+      算量检查更新按钮点击
+    }
+  }
+}
+
+entity IPC {
+  IPC通信 \n
+  electron-better-ipc
+}
+
+
+
+entity ByteIo {
+  埋点验证平台
+}
+
+Main.Trackservices.logStartWorkbench -[hidden]-> Main.Trackservices.logShutDownWorkbench
+Main.Trackservices.logShutDownWorkbench -[hidden]-> Main.Trackservices.logOnlineHeartbeat
+
+Renderer.Trackservices.logUserLogin -[hidden]-> Renderer.Trackservices.logEnterCountLIstPage
+Renderer.Trackservices.logEnterCountLIstPage -[hidden]-> Renderer.Trackservices.logStayCountLIstPage
+Renderer.Trackservices.logStayCountLIstPage -[hidden]-> Renderer.Trackservices.logClickCountLIstCheck
+
+Main.EventTracking --> TEA: 包裹转发实例方法
+
+Main.Trackservices -> Main.EventTracking: 调用reportStat
+
+IPC --> Main.EventTracking: 调用reportStat
+
+Renderer.EventTracking -> IPC
+
+Renderer.EventTracking <- Renderer.Trackservices
+
+@enduml

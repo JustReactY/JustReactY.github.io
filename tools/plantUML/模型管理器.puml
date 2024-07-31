@@ -1,0 +1,73 @@
+
+@startuml
+skinparam dpi 3840
+title 模型管理器
+
+namespace 源数据 {
+  struct 模型源文件 {
+    +fileType
+    +size
+    +folderMap
+  }
+}
+
+namespace tos {
+  struct 通用文件上传服务 {
+    +内网
+  }
+}
+
+namespace 模型管理器 {
+  struct 上传 {
+    +任务数量
+    +任务状态
+    +网速
+  }
+
+  struct 管理 {
+    +分组
+    +重命名
+  }
+
+  struct 下载 {
+    +存储文件夹
+  }
+}
+
+' namespace 存储数据 {
+'   struct MongoDB {
+'     +uri
+'     +文件名
+'     -ByteDoc
+'   }
+' }
+
+namespace 后台分组服务 {
+  struct 分组 {
+    +全部
+    -uri
+    -folderMap
+  }
+}
+
+
+源数据 --> 上传: 验证文件类型
+
+上传 --> 通用文件上传服务: 获取uri
+通用文件上传服务 --> 分组: 调用server接口存储
+' 通用文件上传服务 --> MongoDB: 存储uri
+
+' MongoDB --> 分组: 默认归属全部
+
+下载 --> 分组: 通过分组服务查询
+
+管理 --> 分组: 通过分组服务管理
+
+note top of 上传
+读取文件夹，按照层级生成三级文件夹作为文件名，
+同时作为唯一标识
+压缩成zip包上传
+end note
+
+
+@enduml

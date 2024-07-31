@@ -1,0 +1,38 @@
+@startuml
+skinparam dpi 800
+
+:管理员: as Admin
+:设计师1: as User1
+:设计师2: as User2
+' (组合数据) as (DataAll)
+
+package "组合数据" {
+  [个人组合数据]
+  [公共组合数据]
+}
+
+package "设计" {
+  [方案1]
+  [方案2]
+}
+
+User1 -> (客户端打组)
+User2 -> (客户端打组)
+Admin -> (分组管理) : 管理后台
+
+User1 -> [方案1] : 编辑
+组合数据 -> [方案1] : 提供组合
+
+/' note right of (DataAll)
+A note can also
+be on several lines
+end note '/
+
+note "客户端打组后作为个人组合" as N2
+(客户端打组) .. N2
+N2 .. [个人组合数据]
+note "管理员可将个人组合复制为公共组合" as N3
+(分组管理) .. N3
+N3 .. [公共组合数据]
+
+@enduml

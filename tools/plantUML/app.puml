@@ -1,0 +1,24 @@
+@startuml
+skinparam dpi 800
+title 施工管理
+
+actor 管理员
+collections 分组
+collections 施工类目
+collections 施工项
+collections 施工项关联规则
+
+
+管理员 -> 分组 : 创建
+
+管理员 -> 施工类目 : 创建
+
+管理员 -> 施工项 : 创建
+
+施工项 -> 施工类目 : 选择所属
+
+管理员 -> 施工项关联规则: 创建
+
+施工项关联规则 -> 施工项 : 选择
+
+@enduml

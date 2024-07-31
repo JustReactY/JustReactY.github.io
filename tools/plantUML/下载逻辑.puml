@@ -1,0 +1,145 @@
+
+@startuml
+skinparam dpi 3840
+title 下载系统逻辑
+
+namespace Model {
+  entity  store
+  namespace downloadSourse {
+    namespace downloaded {
+      entity  programs {
+        应用程序的下载信息
+      }
+      entity  plugins {
+        插件的下载信息
+      }
+      entity  files {
+        文件的下载信息，如效果图、全景图
+      }
+    }
+
+    entity  downloadingList {
+      下载队列信息
+    }
+  }
+  struct downloadingItem {
+    +key
+    +downloadPath
+    +status
+    +path: string
+    +urlChain
+    +offset: number 下载断点开始的地方
+    +length
+    +lastModified
+    +eTag
+    +startTime
+  }
+  struct downloadedItem {
+    +downloadPath
+    +path: string
+    +length
+    +checkMd5Status ?: boolean
+    +checkMd5Date ?: Time
+  }
+  enum  DOWNLOAD_SAVE_PATH {
+    +FILE //默认文件
+    +PROGRAM //默认应用程序
+    +PLUGIN //默认插件
+    +USER_SET //用户设置的应用程序/插件下载
+  }
+  enum  DOWNLOAD_STATUS {
+    +READY // 准入
+    +PENDING // 已进入待下载队列，但是还没开始下载。
+    +DOWNLOADING // 正在下载
+    +PAUSE // 下载暂停
+    +RESUME // 下载继续
+    +CANCEL // 下载取消
+    +RESOLVE // 下载完成
+    +REJECT // 下载失败
+    +REPEAT // 任务重复
+  }
+}
+
+namespace Main {
+  class  DownloadFiles {
+    -downloadingList 存储下载实例
+
+    +mkdirForSavedPath() 保证下载目标文件夹存在
+    +initDownload() 注册下载事件
+    +initDecompress() 注册解压缩事件
+
+    +退出前如有下载任务询问是否取消  \n beforeQuitCheckDownloadingAndAskCancel()
+
+    +setDefaultFilesSavedPath() 修改默认文件下载路径
+    +getDefaultFilesSavedPath()
+
+    +修改默认程序/插件下载路径 \n setDefaultProgramsSavedPath()
+
+    +getDefaultProgramsSavedPath()
+    +getDiskSpace() 获取磁盘剩余空间
+
+    +setSavedFiles()
+    +getSavedFiles()
+    +setSavedPrograms()
+    +getSavedPrograms()
+    +setSavedPlugins()
+    +getSavedPlugins()
+  }
+
+  class  CheckFilesMds {
+
+  }
+
+  interface onAppReady
+}
+
+namespace Render {
+  class downloadFilesUtils {
+    - status: \n DOWNLOAD_STATUS.PAUSE | \n DOWNLOAD_STATUS.RESUME | \n DOWNLOAD_STATUS.CANCEL
+
+    +onSetDefaultFilesSavedPath(): Promise<>
+    +onSetDefaultProgramsSavedPath(): Promise<>
+
+    +downloadFile(downloadPath): Promise<>
+    +changeDownloadingFileStatus(keyof status): Promise<>
+
+    +getDownloadingSourse(): Promise<>
+
+    +useDownload()
+    +useDecompress()
+    +useInstall()
+  }
+
+  entity applicationPage {
+    处理应用程序文件
+  }
+  entity downloadCenterPage {
+    处理下载中心文件
+  }
+
+}
+
+
+files -[hidden]-> programs
+programs -[hidden]-> plugins
+plugins -[hidden]-> downloadingList
+Model.DOWNLOAD_SAVE_PATH -[hidden]-> Model.DOWNLOAD_STATUS
+Main.DownloadFiles -[hidden]-> Main.CheckFilesMds
+Main.CheckFilesMds -[hidden]-> Main.onAppReady
+Render.downloadFilesUtils -[hidden]-> applicationPage
+applicationPage -[hidden]-> downloadCenterPage
+
+
+Main.DownloadFiles -> store
+Main.DownloadFiles --> Model.downloadSourse
+Main.CheckFilesMds --> Main.DownloadFiles : 检查应用程序完整性并标记
+Main.onAppReady --> Main.CheckFilesMds : 初始化后静默执行
+Render -> Main : 获取数据
+
+
+downloadingList -right-> downloadingItem : 存储下载中的任务信息
+Model.downloadSourse.downloaded -down-> downloadedItem : 存储下载完成的信息
+store -- Model.DOWNLOAD_SAVE_PATH : 存储四种下载地址信息
+
+
+@enduml

@@ -1,0 +1,26 @@
+
+@startuml
+skinparam dpi 800
+' title UI_Diff工具
+skinparam componentStyle rectangle
+
+package "React 生命周期" {
+  node "首次挂载" {
+    [初始化 \n constructor] --> [获取最新状态 \n getDerivedStateFromProps]
+    [获取最新状态 \n getDerivedStateFromProps] --> [创建vDOM \n render]
+    [创建vDOM \n render] --> [挂载到页面 \n componentDidMount]
+  }
+  node "更新阶段(更新state/props)" {
+    [获取最新状态 \n getDerivedStateFromProps] -> [是否需要更新 \n shouldComponentUpdate]
+    [是否需要更新 \n shouldComponentUpdate] --> [更新vDOM \n render]
+    [更新vDOM \n render] --> [获取更新前状态 \n getsnapshotbeforeupdate]
+    [获取更新前状态 \n getsnapshotbeforeupdate] --> [更新 \n componentDidUpdate]
+  }
+  node "卸载阶段" {
+    [卸载 \n componentWillUnMount]
+  }
+
+}
+
+
+@enduml

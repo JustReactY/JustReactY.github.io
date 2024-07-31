@@ -1,0 +1,17 @@
+@startuml
+
+skinparam dpi 800
+title  legacy
+' start
+
+repeat
+  :react调度更新;
+  :render（构建fibertree）;
+  :commit（渲染fibertree）;
+  :处理effect;
+  :浏览器绘制;
+repeat while (更新完成?)
+
+' stop
+
+@enduml

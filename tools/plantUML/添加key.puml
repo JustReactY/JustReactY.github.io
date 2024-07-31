@@ -1,0 +1,30 @@
+
+@startuml
+skinparam dpi 800
+' title UI_Diff工具
+skinparam componentStyle rectangle
+
+package "添加key" {
+
+  node "更新节点后" {
+    [组件节点1 \n k = 2] --> [文本节点1 \n k = 3]
+    [文本节点1 \n k = 3] --> [空节点1 \n k = 4]
+    [空节点1 \n k = 4] --> [数组节点1 \n k = 5]
+  }
+  node "更新节点前" {
+    [DOM节点 \n k = 1] --> [组件节点 \n k = 2]
+    [组件节点 \n k = 2] --> [文本节点 \n k = 3]
+    [文本节点 \n k = 3] --> [空节点 \n k = 4]
+    [空节点 \n k = 4] --> [数组节点 \n k = 5]
+  }
+
+  [DOM节点 \n k = 1] -[#red]> [组件节点1 \n k = 2]
+  [组件节点 \n k = 2] -[#green]> [组件节点1 \n k = 2]
+  [文本节点 \n k = 3] -[#green]> [文本节点1 \n k = 3]
+  [空节点 \n k = 4] -[#green]> [空节点1 \n k = 4]
+  [数组节点 \n k = 5] -[#green]> [数组节点1 \n k = 5]
+
+}
+
+
+@enduml

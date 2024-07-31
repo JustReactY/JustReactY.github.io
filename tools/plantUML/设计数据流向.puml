@@ -1,0 +1,61 @@
+@startuml
+skinparam dpi 800
+
+:设计师: as User
+
+User -> (新建设计) : 工作台
+
+package "我的设计" {
+  package "设计一" {
+    [方案一]
+  }
+  package "设计二" {
+    [方案]
+  }
+
+}
+
+package "回收站" {
+  package "删除的设计二" {
+    [方案*]
+  }
+}
+
+note right of 我的设计
+工作台可以创建、删除设计
+每个设计包含数量大于等于1个方案
+每个设计一定包含一个主方案
+主方案不允许删除
+end note
+
+note right of (新建设计)
+新建设计会默认创建一个空方案作为主方案
+end note
+(新建设计) -> 我的设计
+
+User -> (打开BIM设计) : 工作台
+
+
+(打开BIM设计) --> [BIM客户端]
+
+设计一 .. (打开BIM设计) : 提供设计ID、方案ID
+
+
+[BIM客户端] .. 设计一
+
+note bottom of [BIM客户端]
+客户端可以对方案增、删、改、查
+但是需要遵循一个设计一定包含一个主方案的设定
+end note
+
+
+User --> (删除设计)
+设计二 .. (删除设计) : 设计ID
+
+设计二 --> 回收站
+
+note bottom of 回收站
+删除的设计会流转到回收站
+允许用户恢复删除的设计
+end note
+@enduml

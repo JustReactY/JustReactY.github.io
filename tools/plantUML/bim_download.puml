@@ -1,0 +1,28 @@
+@startuml
+skinparam dpi 800
+
+title bim_download
+participant BIM #Lime
+participant FLODE #Lime
+participant FILE #Lime
+participant TOS #Cyan
+participant SERVER #Silver
+participant WORKBENCH #Magenta
+participant FILE2 #Magenta
+participant FLODE2 #Magenta
+participant MD5 #Magenta
+participant APP #BlueViolet
+
+autonumber
+BIM -> FLODE : compress() -> get FILE
+BIM -> FILE : md5() -> get md5
+BIM -> TOS : update() -> get url
+BIM -> SERVER : PUT() -> { url: string, md5: string }
+WORKBENCH -> SERVER : get() -> { url: string, md5: string }
+WORKBENCH -> FILE2 : download() -> file
+FILE2 -> FILE : check md5 -> same
+FILE2 -> FLODE2 : uncompress()
+FLODE2 -> MD5 : md5()
+MD5 -> WORKBENCH : store()
+WORKBENCH -> APP : install() -> app.setAsDefaultProtocolClient
+@enduml

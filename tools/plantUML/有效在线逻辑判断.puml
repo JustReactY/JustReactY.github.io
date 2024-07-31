@@ -1,0 +1,78 @@
+
+@startuml
+skinparam dpi 3840
+title 有效在线逻辑判断
+
+participant 工作台在线 as enter
+
+actor 打开工作台 as start
+actor 电脑睡眠 as end
+actor 电脑锁屏 as end1
+
+control 延时120s处理 as build
+
+collections 工作台开启时间点 as start1
+collections 睡眠时间点 as end2
+collections 锁屏时间点 as end3
+
+
+control 上报 as save1
+control 数据聚合 as save2
+
+database 埋点数据 as data
+
+control 存储落表 as save
+
+collections 工作台关闭时间点 as start2
+collections 睡眠恢复时间点 as start4
+collections 锁屏恢复时间点 as start5
+
+
+actor 电脑睡眠恢复 as end4
+actor 电脑锁屏恢复 as end5
+actor 关闭工作台 as start3
+
+
+enter -> start
+
+
+start -> save2: 处理残留数据
+save2 -> save1
+save1 -> data: 清空数据
+
+start -> save1: 上报工作台启动
+
+
+start -> start1: 存储启动时间点
+
+start1 -> save
+
+save -> data
+
+start3 -> start2: 存储关闭时间点
+start2 -> save
+save -> data
+
+start3 -> save2
+save2 -> save1: 上报
+save2 -> data: 清空数据
+
+end -> build
+end1 -> build
+
+build -> end2
+build -> end3
+
+end2 -> save
+end3 -> save
+save -> data
+
+end4 -> build: 清楚睡眠数据定时器
+build -> start4: 如果不存在，说明没有操作很长时间了，记录睡眠恢复时间点
+start4 -> save
+save -> data
+end4 -> build: 清楚锁屏数据定时器
+build -> start5: 如果不存在，说明没有操作很长时间了，记录锁屏恢复时间点
+start5 -> save
+save -> data
+@enduml

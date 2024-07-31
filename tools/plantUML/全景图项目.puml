@@ -1,0 +1,36 @@
+@startuml
+skinparam dpi 2400
+
+package "bim_fe_pano" {
+  package "pano.html" {
+    [安全-有效期]
+    [切场景]
+    [场景展示]
+    [错误页面]
+
+    interface init接口
+    interface 切换场景接口
+    interface share接口
+    interface emitter接口
+  }
+  package "page-pc.html" {
+    [iframe加载 pano.html]
+
+    [pc小地图]
+    [pc 场景切换]
+    [分享PC]
+  }
+  package "page-mobile.html" {
+    [iframe加载  pano.html]
+
+    [mobile小地图]
+    [mobile 场景切换]
+    [分享mobile]
+  }
+
+  pano.html .. [iframe加载 pano.html]
+  pano.html .. [iframe加载  pano.html]
+}
+
+
+@enduml

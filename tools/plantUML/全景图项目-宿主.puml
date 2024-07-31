@@ -1,0 +1,28 @@
+@startuml
+skinparam dpi 1200
+
+package "bim_fe_pano" {
+  package "pc页面" {
+    [**]
+  }
+  package "手机页面" {
+    [***]
+  }
+}
+
+package "bim_fe_admin" {
+ package "全景图查看页面" {
+  [iframe层]
+ }
+}
+
+package "bim_workbench" {
+ package "pc全景图查看页面" {
+  [ iframe层]
+ }
+}
+
+[iframe层] .. pc页面
+
+[ iframe层] .. 手机页面
+@enduml

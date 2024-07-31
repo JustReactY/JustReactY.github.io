@@ -1,0 +1,73 @@
+
+@startuml
+skinparam dpi 3840
+title 在线逻辑判断
+
+/' ' 参与者
+participant Participant as Foo
+' 演员
+actor       Actor       as Foo1
+' 边界
+boundary    Boundary    as Foo2
+' 控制
+control     Control     as Foo3
+' 实体
+entity      Entity      as Foo4
+' 数据库
+database    Database    as Foo5
+' 收藏
+collections Collections as Foo6
+' 队伍
+queue       Queue       as Foo7
+ '/
+' Foo -> Foo1 : To actor
+' Foo -> Foo2 : To boundary
+' Foo -> Foo3 : To control
+' Foo -> Foo4 : To entity
+' Foo -> Foo5 : To database
+' Foo -> Foo6 : To collections
+' Foo -> Foo7: To queue
+
+
+participant 工作台在线 as enter
+
+actor 打开工作台 as start
+
+collections 工作台开启时间点 as start1
+
+control 上报 as save1
+control 数据聚合 as save2
+
+database 埋点数据 as data
+
+control 存储落表 as save
+
+collections 工作台关闭时间点 as start2
+
+actor 关闭工作台 as start3
+
+
+enter -> start
+
+
+start -> save2: 处理残留数据
+save2 -> save1
+save1 -> data: 清空数据
+
+start -> save1: 上报工作台启动
+
+
+start -> start1: 存储启动时间点
+
+start1 -> save
+
+save -> data
+
+start3 -> start2: 存储关闭时间点
+start2 -> save
+save -> data
+
+start3 -> save2
+save2 -> save1: 上报
+save2 -> data: 清空数据
+@enduml

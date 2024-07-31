@@ -1,0 +1,17 @@
+@startuml
+
+skinparam dpi 800
+title  render
+' start
+
+repeat
+  :legacyRenderSubtreeIntoContainer（入口函数）;
+  :legacyCreateRootFromDOMContainer;
+  :commit（渲染fibertree）;
+  :处理effect;
+  :浏览器绘制;
+repeat while (更新完成?)
+
+' stop
+
+@enduml

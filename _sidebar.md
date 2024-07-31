@@ -33,3 +33,4 @@
   * [种草](grass.md)
   * [个人博客搭建](selfDoces/)
   * [aigc](aigc/)
+  <!-- * [思考](think.md) -->

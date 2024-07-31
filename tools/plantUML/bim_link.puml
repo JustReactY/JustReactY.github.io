@@ -1,0 +1,23 @@
+@startuml
+skinparam dpi 800
+
+title bim_link
+participant SERVER #Silver
+participant WORKBENCH #Magenta
+participant FLODE #Magenta
+participant MD5 #Magenta
+participant APP #Cyan
+
+participant BIM #Lime
+
+autonumber
+WORKBENCH -> SERVER : get() -> version
+WORKBENCH -> FLODE : app.getAppPath() fs() -> check download
+WORKBENCH -> MD5 : store() -> get md5
+MD5 -> FLODE : check md5 -> same
+WORKBENCH -> APP : install() -> app.setAsDefaultProtocolClient
+
+APP -> BIM : link() -> rouse
+BIM -> WORKBENCH : pipe() -> hasconnect
+
+@enduml

@@ -1,0 +1,6 @@
+
+@startuml
+skinparam dpi 3840
+title 日志系统逻辑
+
+@enduml
